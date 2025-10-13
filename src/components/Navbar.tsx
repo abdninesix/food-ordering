@@ -1,6 +1,7 @@
 import React from 'react'
 import HamburgerMenu from './HamburgerMenu'
 import Link from 'next/link'
+import CartIcon from './CartIcon'
 
 const Navbar = () => {
   return (
@@ -9,11 +10,14 @@ const Navbar = () => {
         <Link href="/" className='text-xl'>Yummies</Link>
 
       {/* HAMBURGER */}
-      <div>
+      <div className='block md:hidden'>
         <HamburgerMenu />
       </div>
 
       {/* NAV LINKS */}
+      <div className='hidden md:flex'>
+        <CartIcon/>
+      </div>
     </div>
   )
 }
