@@ -9,7 +9,7 @@ const Navbar = () => {
       {/* NAV LINKS */}
       <div className='hidden md:flex gap-4'>
         <Link href="/">Homepage</Link>
-        <Link href="/"></Link>
+        <Link href="/">Menu</Link>
         <Link href="/"></Link>
         <CartIcon />
       </div>
