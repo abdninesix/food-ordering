@@ -33,7 +33,8 @@ const HamburgerMenu = () => {
 
           {!user ? <Link href="/login" onClick={() => setIsOpen(false)}>Login</Link> :
             <Link href="/orders" onClick={() => setIsOpen(false)}>Orders</Link>}
-          <CartIcon />
+          <Link href="/cart" onClick={() => setIsOpen(false)}><CartIcon /></Link>
+
         </div>
       )}
     </div>
