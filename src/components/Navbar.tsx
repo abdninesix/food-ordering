@@ -4,11 +4,9 @@ import Link from 'next/link'
 
 const Navbar = () => {
   return (
-    <div>
+    <div className='h-12 text-red-500 p-4 flex items-center justify-between border-b-2 uppercase'>
       {/* LOGO */}
-      <div>
-        <Link href="/">Yummies</Link>
-      </div>
+        <Link href="/" className='text-xl'>Yummies</Link>
 
       {/* HAMBURGER */}
       <div>
