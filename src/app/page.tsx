@@ -1,15 +1,13 @@
-import FeaturedItems from "@/components/FeaturedItems"
-import Offer from "@/components/Offer"
-import Slider from "@/components/Slider"
+import Featured from '@/components/Featured'
+import Offer from '@/components/Offer'
+import Slider from '@/components/Slider'
 
-const HomePage = () => {
+export default function Home() {
   return (
     <main>
-      <Slider />
-      <FeaturedItems />
-      <Offer />
+      <Slider/>
+      <Featured/>
+      <Offer/>
     </main>
   )
 }
-
-export default HomePage

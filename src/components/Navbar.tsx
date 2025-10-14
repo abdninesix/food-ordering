@@ -1,42 +1,42 @@
-import React from 'react'
-import HamburgerMenu from './HamburgerMenu'
-import Link from 'next/link'
-import CartIcon from './CartIcon'
-import Image from 'next/image'
+import React from "react";
+import Menu from "./Menu";
+import Link from "next/link";
+import CartIcon from "./CartIcon";
+import Image from "next/image";
 
 const Navbar = () => {
-
-  const user = false
-
+  const user = false;
   return (
-    <div className='h-12 text-red-500 p-4 lg:px-20 xl:px-40 flex items-center justify-between border-b-2 uppercase'>
+    <div className="h-12 text-red-500 p-4 flex items-center justify-between border-b-2 border-b-red-500 uppercase md:h-24 lg:px-20 xl:px-40">
       {/* LEFT LINKS */}
-      <div className='hidden md:flex items-center gap-4 flex-1'>
+      <div className="hidden md:flex gap-4 flex-1">
         <Link href="/">Homepage</Link>
         <Link href="/menu">Menu</Link>
-        <Link href="/contact">Contact</Link>
+        <Link href="/">Contact</Link>
       </div>
-
       {/* LOGO */}
-      <Link href="/" className='text-xl font-bold flex-1 md:text-center'>Yummies</Link>
-
-      {/* HAMBURGER */}
-      <div className='block md:hidden'>
-        <HamburgerMenu />
+      <div className="text-xl md:font-bold flex-1 md:text-center">
+        <Link href="/">Massimo</Link>
       </div>
-
+      {/* MOBILE MENU */}
+      <div className="md:hidden">
+        <Menu />
+      </div>
       {/* RIGHT LINKS */}
-      <div className='hidden md:flex items-center justify-end gap-4 flex-1'>
-        <div className='absolute top-2 right-2 bg-orange-200 p-1 rounded-full flex items-center gap-1 cursor-pointer'>
+      <div className="hidden md:flex gap-4 items-center justify-end flex-1">
+        <div className="md:absolute top-3 r-2 lg:static flex items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md">
           <Image src="/phone.png" alt="" width={20} height={20} />
-          <span>+92 123 4567 890</span>
+          <span>123 456 78</span>
         </div>
-        {!user ? <Link href="/login">Login</Link> :
-          <Link href="/orders">Orders</Link>}
+        {!user ? (
+          <Link href="/login">Login</Link>
+        ) : (
+          <Link href="/orders">Orders</Link>
+        )}
         <CartIcon />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

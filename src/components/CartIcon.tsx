@@ -1,17 +1,16 @@
-"use client"
-
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const CartIcon = () => {
-    return (
-        <div className='flex items-center gap-2'>
-            <div className='hidden md:block relative size- md:size-5'>
-                <Image src="/cart.png" alt="CartIcon" fill />
-            </div>
-            <span>Cart (3)</span>
-        </div>
-    )
-}
+  return (
+    <Link href="/cart" className="flex items-center gap-4">
+      <div className="relative w-8 h-8 md:w-5 md:h-5">
+        <Image src="/cart.png" alt="" fill />
+      </div>
+      <span>Cart (3)</span>
+    </Link>
+  );
+};
 
-export default CartIcon
+export default CartIcon;
