@@ -15,9 +15,5 @@ services:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
       POSTGRES_DB: mydb
-
-  adminer:
-    image: adminer
-    restart: always
     ports:
-      - 8080:8080
+      - 5432:5432
