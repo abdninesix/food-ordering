@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  // output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -32,7 +32,7 @@ model Product {
   createdAt  DateTime @default(now())
   title      String
   desc       String
-  img        String
+  img        String?
   price      Decimal
   isFeatured Boolean  @default(false)
   options    Json[]
@@ -45,4 +45,6 @@ model Orders {
   createdAt DateTime @default(now())
   price     Decimal
   products  Json[]
+  status String
+  intent_id String? @unique
 }
