@@ -14,3 +14,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Models
+
+model Category {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  title     String
+  desc      String
+  color     String
+  img       String
+  slug      String    @unique
+  products  Product[]
+}
+
+model Product {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  title      String
+  desc       String
+  img        String
+  price      Decimal
+  isFeatured Boolean  @default(false)
+  options    Json[]
+  category   Category @relation(fields: [catSlug], references: [slug])
+  catSlug    String
+}
+
+model Orders {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  price     Decimal
+  products  Json[]
+}
