@@ -8,7 +8,7 @@ import React from "react";
 const LoginPage = () => {
 
   const { data: session, status } = useSession();
-  console.log(status, session);
+  console.log("status:",status, "and session:",session);
 
   return (
     <div className="p-4 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex items-center justify-center">
