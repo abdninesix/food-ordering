@@ -13,4 +13,3 @@ export const GET = async (req: NextRequest) => {
         return new NextResponse(JSON.stringify({ message: "Something went wrong" }), { status: 500 })
     }
 }
-
