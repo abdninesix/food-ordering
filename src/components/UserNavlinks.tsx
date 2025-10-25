@@ -8,12 +8,10 @@ const UserNavlinks = () => {
 
     const { status } = useSession();
 
-    console.log("status:", status);
-
     return (
         <>
             {status === "authenticated" ? (
-                <div className='flex items-center gap-4'>
+                <div className='flex flex-col md:flex-row items-center gap-8 md:gap-4'>
                     <Link href="/orders">Orders</Link>
                     <Link href="/" onClick={() => signOut()}>Logout</Link>
                 </div>
