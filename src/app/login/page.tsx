@@ -17,7 +17,6 @@ const LoginPage = () => {
   if (status === "authenticated") {
     router.push("/")
   }
-  console.log("status:",status, "and data:",data);
 
   return (
     <div className="p-4 h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex items-center justify-center">

@@ -3,6 +3,7 @@ import Menu from "./Menu";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
 import Image from "next/image";
+import UserNavlinks from "./UserNavlinks";
 
 const Navbar = () => {
   
@@ -31,6 +32,7 @@ const Navbar = () => {
           <Image src="/phone.png" alt="" width={20} height={20} />
           <span>123 456 78</span>
         </div>
+        <UserNavlinks/>
         <CartIcon />
       </div>
     </div>

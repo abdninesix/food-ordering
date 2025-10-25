@@ -8,6 +8,8 @@ const UserNavlinks = () => {
 
     const { status } = useSession();
 
+    console.log("status:", status);
+
     return (
         <div>
             {status === "authenticated" ? (
