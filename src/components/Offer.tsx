@@ -17,7 +17,7 @@ const Offer = () => {
       </div>
       {/* IMAGE CONTAINER */}
       <div className="flex-1 w-full relative md:h-full">
-        <Image src="/offerProduct.png" alt="" fill className="object-contain" />
+        <Image src="/offerProduct.png" alt="" width={1024} height={1024} className="object-contain" />
       </div>
     </div>
   );
