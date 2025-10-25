@@ -11,16 +11,16 @@ const UserNavlinks = () => {
     console.log("status:", status);
 
     return (
-        <div>
+        <>
             {status === "authenticated" ? (
-                <>
+                <div className='flex items-center gap-4'>
                     <Link href="/orders">Orders</Link>
-                    <button onClick={() => signOut()}>Logout</button>
-                </>
+                    <Link href="/" onClick={() => signOut()}>Logout</Link>
+                </div>
             ) : (
                 <Link href="/login">Login</Link>
             )}
-        </div>
+        </>
     )
 }
 
