@@ -1,8 +1,11 @@
 // WITH A LIBRARY
 "use client"
 
-import React from 'react'
-import Countdown from 'react-countdown'
+import dynamic from "next/dynamic";
+
+const Countdown = dynamic(() => import("react-countdown"), { //we dynamically imported react-countdown to avoid ssr/csr sync issue
+  ssr: false,
+});
 
 const endingDate = new Date("2026-02-25")
 
