@@ -25,7 +25,7 @@ const Slider = () => {
         <button className="bg-red-500 text-white py-4 px-8">Order Now</button>
       </div>
       {/* IMAGE CONTAINER */}
-      <div className="w-full flex-1 relative">
+      <div className="w-full flex-1 relative overflow-hidden">
         <Image
           src={sliders[currentSlide].image}
           alt=""

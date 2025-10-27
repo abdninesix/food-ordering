@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthSessionProvider>
-          <div className="overflow-x-hidden">
+          <div className="overflow-hidden">
             <Notification />
             <Navbar />
             {children}
