@@ -1,4 +1,5 @@
 import { auth } from "@/utils/auth";
+import prisma from "@/utils/connect";
 import { NextRequest, NextResponse } from "next/server"
 
 export const GET = async (req: NextRequest) => {
@@ -7,8 +8,10 @@ export const GET = async (req: NextRequest) => {
 
     if (session) {
         try {
-            if (session.user.) {}
-            return new NextResponse(JSON.stringify(orders), { status: 200 })
+            if (session.user.isAdmin) {
+                const orders = prisma.orders.findMany()
+                return new NextResponse(JSON.stringify(orders), { status: 200 })
+            }
         } catch (error) {
             console.log(error)
             return new NextResponse(JSON.stringify({ message: "Something went wrong" }), { status: 500 })
