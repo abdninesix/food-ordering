@@ -9,10 +9,10 @@ export const GET = async (req: NextRequest) => {
     if (session) {
         try {
             if (session.user.isAdmin) {
-                const orders = prisma.orders.findMany()
+                const orders = await prisma.orders.findMany()
                 return new NextResponse(JSON.stringify(orders), { status: 200 })
             }
-            const orders = prisma.orders.findMany({ where: { userEmail: session.user.email! } })
+            const orders = await prisma.orders.findMany({ where: { userEmail: session.user.email! } })
             return new NextResponse(JSON.stringify(orders), { status: 200 })
         } catch (error) {
             console.log(error)
