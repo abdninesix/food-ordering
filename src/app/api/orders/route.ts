@@ -12,6 +12,8 @@ export const GET = async (req: NextRequest) => {
                 const orders = prisma.orders.findMany()
                 return new NextResponse(JSON.stringify(orders), { status: 200 })
             }
+            const orders = prisma.orders.findMany({ where: { userEmail: session.user.email! } })
+            return new NextResponse(JSON.stringify(orders), { status: 200 })
         } catch (error) {
             console.log(error)
             return new NextResponse(JSON.stringify({ message: "Something went wrong" }), { status: 500 })
