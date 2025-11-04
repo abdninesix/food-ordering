@@ -43,12 +43,19 @@ const OrdersPage = () => {
               <td className="hidden md:block py-6 px-1">{item.id}</td>
               <td className="py-6 px-1">{item.createdAt.toString().slice(0, 10)}</td>
               <td className="py-6 px-1">{item.price}</td>
-              <td className="hidden md:block py-6 px-1">{}</td>
-              <td className="py-6 px-1">On the way (approx. 10min)...</td>
+              <td className="hidden md:block py-6 px-1">{item.products[0].title}</td>
+              {session?.user.isAdmin ?
+                (<td>
+                  <form className="flex items-center gap-2" onSubmit={(e)=>handleUpdate(e, item.id)}>
+                    <input placeholder={item.status} className="p-2 ring-1 rind-red-100 rounded-md" />
+                    <button className="p-2 bg-red-500 text-white rounded-md">Edit</button>
+                  </form>
+                </td>) :
+                (<td className="py-6 px-1">{item.status}</td>)}
             </tr>))}
         </tbody>
       </table>
-    </div>
+    </div >
   );
 };
 
