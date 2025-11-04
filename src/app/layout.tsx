@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthSessionProvider from "@/components/SessionProvider";
 import QueryProvider from "@/components/QueryProvider";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
               <Navbar />
               {children}
               <Footer />
+              <ToastContainer position="bottom-right" theme="dark" autoClose={3000} />
             </div>
           </QueryProvider>
         </AuthSessionProvider>
