@@ -26,7 +26,7 @@ const OrdersPage = () => {
 
   const mutation = useMutation({
     mutationFn: ({ id, status }: { id: string, status: string }) => {
-      return fetch(`http://localhost:3000/api/orders/${id}`, { headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status }) })
+      return fetch(`http://localhost:3000/api/orders/${id}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status }) })
     },
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ['orders'] })
@@ -38,9 +38,10 @@ const OrdersPage = () => {
     const form = e.target as HTMLFormElement;
     const input = form.elements[0] as HTMLInputElement;
     const status = input.value;
+    mutation.mutate({ id, status })
   }
 
-  if (isLoading || status === "loading") return "Loading..."
+  if (isLoading || status === "loading") return <div className="text-center">Loading orders list...</div>
 
   return (
     <div className="p-4 lg:px-20 xl:px-40">
@@ -65,7 +66,7 @@ const OrdersPage = () => {
                 (<td>
                   <form className="flex items-center gap-2" onSubmit={(e) => handleUpdate(e, item.id)}>
                     <input placeholder={item.status} className="p-2 ring-1 rind-red-100 rounded-md" />
-                    <button className="p-2 bg-red-500 text-white rounded-md">Edit</button>
+                    <button className="p-2 bg-red-500 text-white rounded-md cursor-pointer">Update</button>
                   </form>
                 </td>) :
                 (<td className="py-6 px-1">{item.status}</td>)}
