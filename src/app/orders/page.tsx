@@ -23,6 +23,13 @@ const OrdersPage = () => {
       ),
   })
 
+  const handleUpdate = (e: React.FormEvent<HTMLFormElement>, id: string) => {
+    e.preventDefault()
+    const form = e.target as HTMLFormElement;
+    const input = form.elements[0] as HTMLInputElement;
+    const status = input.value;
+  }
+
   if (isLoading || status === "loading") return "Loading..."
 
   return (
@@ -46,7 +53,7 @@ const OrdersPage = () => {
               <td className="hidden md:block py-6 px-1">{item.products[0].title}</td>
               {session?.user.isAdmin ?
                 (<td>
-                  <form className="flex items-center gap-2" onSubmit={(e)=>handleUpdate(e, item.id)}>
+                  <form className="flex items-center gap-2" onSubmit={(e) => handleUpdate(e, item.id)}>
                     <input placeholder={item.status} className="p-2 ring-1 rind-red-100 rounded-md" />
                     <button className="p-2 bg-red-500 text-white rounded-md">Edit</button>
                   </form>
