@@ -1,7 +1,7 @@
 "use client"
 
 import { OrderType } from "@/types/types";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -9,6 +9,7 @@ import React from "react";
 const OrdersPage = () => {
 
   const { data: session, status } = useSession();
+  const queryClient = useQueryClient();
 
   const router = useRouter()
   if (status === "unauthenticated") {
@@ -21,6 +22,13 @@ const OrdersPage = () => {
       fetch('http://localhost:3000/api/orders').then((res) =>
         res.json(),
       ),
+  })
+
+  const mutation = useMutation({
+    mutationFn: ({ id, status }: { id: string, status: string }) => {
+      return fetch(`http://localhost:3000/api/orders/${id}`, { headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status }) })
+      
+    },
   })
 
   const handleUpdate = (e: React.FormEvent<HTMLFormElement>, id: string) => {
