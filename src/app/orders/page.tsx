@@ -27,8 +27,10 @@ const OrdersPage = () => {
   const mutation = useMutation({
     mutationFn: ({ id, status }: { id: string, status: string }) => {
       return fetch(`http://localhost:3000/api/orders/${id}`, { headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status }) })
-      
     },
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ['orders'] })
+    }
   })
 
   const handleUpdate = (e: React.FormEvent<HTMLFormElement>, id: string) => {
