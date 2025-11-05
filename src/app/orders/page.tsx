@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 const OrdersPage = () => {
 
@@ -30,6 +31,7 @@ const OrdersPage = () => {
     },
     onSuccess() {
       queryClient.invalidateQueries({ queryKey: ['orders'] })
+      toast.success("Order status updated!")
     }
   })
 
@@ -57,7 +59,7 @@ const OrdersPage = () => {
         </thead>
         <tbody>
           {data.map((item: OrderType) => (
-            <tr className="text-sm md:text-base bg-red-50" key={item.id}>
+            <tr className={`text-sm md:text-base ${item.status !== "delivered" && "bg-fuchsia-50"}`} key={item.id}>
               <td className="hidden md:block py-6 px-1">{item.id}</td>
               <td className="py-6 px-1">{item.createdAt.toString().slice(0, 10)}</td>
               <td className="py-6 px-1">{item.price}</td>
