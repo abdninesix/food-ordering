@@ -1,1 +1,3 @@
-something
+const INITIAL_STATE = {
+    product: []
+}
