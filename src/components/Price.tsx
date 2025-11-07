@@ -10,7 +10,7 @@ const Price = ({ product }: { product: ProductType }) => {
 
   useEffect(() => {
     if (product.options?.length) {
-      setTotal(quantity * product.price + product.options[selected].additionalPrice)
+      setTotal(quantity * Number(product.price) + Number(product.options[selected].additionalPrice))
     }
   }, [quantity, selected, product]);
 
@@ -22,11 +22,7 @@ const Price = ({ product }: { product: ProductType }) => {
         {product.options?.length && product.options?.map((option, index) => (
           <button
             key={option.title}
-            className="min-w-[6rem] p-2 ring-1 ring-red-400 rounded-md"
-            style={{
-              background: selected === index ? "rgb(248 113 113)" : "white",
-              color: selected === index ? "white" : "red",
-            }}
+            className={`min-w-[6rem] p-2 rounded-md ${selected === index ? "bg-red-500 text-white" : "bg-white text-red-500"}`}
             onClick={() => setSelected(index)}
           >
             {option.title}
