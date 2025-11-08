@@ -25,6 +25,10 @@ const Price = ({ product }: { product: ProductType }) => {
   }
 
   useEffect(() => {
+    useCartStore.persist.rehydrate()
+  },[])
+
+  useEffect(() => {
     if (product.options?.length) {
       setTotal(quantity * (Number(product.price) + Number(product.options[selected].additionalPrice)))
     }
