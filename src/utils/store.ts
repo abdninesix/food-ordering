@@ -14,11 +14,27 @@ export const useCartStore = create(persist<CartType & ActionType>((set, get) => 
     totalPrice: INITIAL_STATE.totalPrice,
 
     addToCart(item) {
-        set((state) => ({
-            products: [...state.products, item],
-            totalItems: state.totalItems + item.quantity,
-            totalPrice: state.totalPrice + item.price,
-        }))
+
+        const products = get().products
+        const productInState = products.find(product => product.id === item.id)
+        if (productInState) {
+            const updatedProducts = products.map((product) => product.id === productInState.id ? {
+                ...item,
+                quantity: item.quantity + product.quantity,
+                price: item.price + product.price,
+            } : item);
+            set((state) => ({
+                products: updatedProducts,
+                totalItems: state.totalItems + item.quantity,
+                totalPrice: state.totalPrice + item.price,
+            }))
+        } else {
+            set((state) => ({
+                products: [...state.products, item],
+                totalItems: state.totalItems + item.quantity,
+                totalPrice: state.totalPrice + item.price,
+            }))
+        }
     },
 
     removeFromCart(item) {
@@ -28,4 +44,4 @@ export const useCartStore = create(persist<CartType & ActionType>((set, get) => 
             totalPrice: state.totalPrice - item.price,
         }))
     }
-}), { name: "cart", skipHydration:true }))
+}), { name: "cart", skipHydration: true }))
