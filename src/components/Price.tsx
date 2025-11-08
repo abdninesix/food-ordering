@@ -50,9 +50,9 @@ const Price = ({ product }: { product: ProductType }) => {
         ))}
       </div>
       {/* QUANTITY AND ADD BUTTON CONTAINER */}
-      <div className="flex justify-between items-center">
+      <div className="flex items-center">
         {/* QUANTITY */}
-        <div className="flex justify-between w-full p-3 ring-1 ring-red-500">
+        <div className="flex justify-between p-3 ring-1 ring-red-500">
           <span>Quantity</span>
           <div className="flex gap-4 items-center">
             <button
