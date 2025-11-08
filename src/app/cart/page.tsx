@@ -15,13 +15,13 @@ const CartPage = () => {
         {/* SINGLE ITEM */}
         {products.map(item => (
           <div className="flex items-center justify-between mb-4" key={item.id}>
-            <Image src="/temporary/p1.png" alt="" width={100} height={100} />
+            {item.img && <Image src={item.img} alt="" width={100} height={100} />}
             <div className="">
-              <h1 className="uppercase text-xl font-bold">sicilian</h1>
-              <span>Large</span>
+              <h1 className="uppercase text-xl font-bold">{item.title}</h1>
+              <span>{item.optionTitle}</span>
             </div>
             <h2 className="font-bold">${item.price}</h2>
-            <span className="cursor-pointer">X</span>
+            <span className="cursor-pointer" onClick={()=>removeFromCart(item)}>X</span>
           </div>
         ))}
       </div>
