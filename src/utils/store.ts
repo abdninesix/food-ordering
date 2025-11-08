@@ -14,7 +14,7 @@ export const useCartStore = create<CartType & ActionType>((set, get) => ({
 
     addToCart(item) {
         set((state) => ({
-            products: [...state.products],
+            products: [...state.products, item],
             totalItems: state.totalItems + item.quantity,
             totalPrice: state.totalPrice + item.price,
         }))
