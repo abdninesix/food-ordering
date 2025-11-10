@@ -14,3 +14,14 @@ export const GET = async (req: NextRequest) => {
         return new NextResponse(JSON.stringify({ message: "Something went wrong" }), { status: 500 })
     }
 }
+
+export const POST = async (req: NextRequest) => {
+    const body = await req.json();
+    try {
+        const product = await prisma.product.create({ data: body });
+        return new NextResponse(JSON.stringify(product), { status: 200 })
+    } catch (error) {
+        console.log(error)
+        return new NextResponse(JSON.stringify({ message: "Something went wrong" }), { status: 500 })
+    }
+}

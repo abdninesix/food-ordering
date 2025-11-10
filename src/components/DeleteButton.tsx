@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const DeleteButton = ({ id }: { id: string }) => {
+const DeleteButton = ({ id }: { id: number }) => {
 
     const { data: session, status } = useSession()
     const router = useRouter()
