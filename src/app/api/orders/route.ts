@@ -23,3 +23,24 @@ export const GET = async (req: NextRequest) => {
 
     }
 }
+
+export const POST = async (req: NextRequest) => {
+
+    const session = await auth()
+
+    if (session) {
+        try {
+            const body = await req.json()
+            if (session.user) {
+                const order = await prisma.orders.create({data:body})
+                return new NextResponse(JSON.stringify(order), { status: 201 })
+            }
+        } catch (error) {
+            console.log(error)
+            return new NextResponse(JSON.stringify({ message: "Something went wrong" }), { status: 500 })
+        }
+    } else {
+        return new NextResponse(JSON.stringify({ message: "You are not authenticated" }), { status: 401 })
+
+    }
+}
