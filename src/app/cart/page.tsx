@@ -12,11 +12,19 @@ const CartPage = () => {
   const { data: session } = useSession()
   const router = useRouter()
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (!session) {
       router.push("/login")
     } else {
-      router.push("/pay")
+      try {
+        const res = await fetch("http://localhost:3000/api/orders", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ price: totalPrice, userEmail: session.user.email, products, status: "Unpaid" })
+        })
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
