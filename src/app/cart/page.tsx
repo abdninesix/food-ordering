@@ -1,12 +1,24 @@
 "use client"
 
 import { useCartStore } from "@/utils/store";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 const CartPage = () => {
 
   const { products, totalItems, totalPrice, removeFromCart } = useCartStore()
+  const { data: session } = useSession()
+  const router = useRouter()
+
+  const handleCheckout = () => {
+    if (!session) {
+      router.push("/login")
+    } else {
+      router.push("/pay")
+    }
+  }
 
   useEffect(() => {
     useCartStore.persist.rehydrate()
@@ -48,7 +60,7 @@ const CartPage = () => {
           <span className="">TOTAL(INCL. VAT)</span>
           <span className="font-bold">$81.70</span>
         </div>
-        <button className="bg-red-500 text-white p-3 rounded-md self-end">
+        <button className="bg-red-500 text-white p-3 rounded-md self-end" onClick={handleCheckout}>
           CHECKOUT
         </button>
       </div>
