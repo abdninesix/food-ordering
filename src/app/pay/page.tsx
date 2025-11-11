@@ -1,9 +1,11 @@
+"use client"
+
 import React from 'react'
 
 const PaymentPage = () => {
-  return (
-    <div>PaymentPage</div>
-  )
+    return (
+        <div>PaymentPage</div>
+    )
 }
 
 export default PaymentPage
