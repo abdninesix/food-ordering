@@ -26,7 +26,7 @@ export const GET = async (req: NextRequest) => {
 
 export const POST = async (req: NextRequest) => {
 
-    // const session = await auth()
+    const session = await auth()
 
     if (session) {
         try {
