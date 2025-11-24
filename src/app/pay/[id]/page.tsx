@@ -1,5 +1,6 @@
 "use client"
 
+import CheckoutForm from '@/components/CheckoutForm'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js'
 import React, { useEffect, useState } from 'react'

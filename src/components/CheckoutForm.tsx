@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CheckoutForm = () => {
-  return (
-    <div>CheckoutForm</div>
-  )
+const CheckoutForm = ({ clientSecret }: { clientSecret: string }) => {
+    return (
+        <div>CheckoutForm</div>
+    )
 }
 
 export default CheckoutForm
