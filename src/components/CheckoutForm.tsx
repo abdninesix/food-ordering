@@ -3,7 +3,7 @@
 import { LinkAuthenticationElement, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react'
 
-const CheckoutForm = ({ clientSecret }: { clientSecret: string }) => {
+const CheckoutForm = () => {
 
     const stripe = useStripe();
     const elements = useElements();

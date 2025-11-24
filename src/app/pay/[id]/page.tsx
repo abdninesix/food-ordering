@@ -36,7 +36,7 @@ const PaymentPage = ({ params }: { params: { id: string } }) => {
         <div>
             {clientSecret && (
                 <Elements options={options} stripe={stripePromise}>
-                    <CheckoutForm clientSecret={clientSecret} />
+                    <CheckoutForm />
                 </Elements>
             )}
         </div>
