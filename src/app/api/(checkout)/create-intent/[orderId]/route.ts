@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export const POST = async ({ params }: { params: { orderId: string } }) => {
+
     const { orderId } = params;
     const order = await prisma.orders.findUnique({ where: { id: orderId } });
 
