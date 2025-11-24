@@ -11,10 +11,9 @@ const PaymentPage = ({ params }: { params: { id: string } }) => {
 
     const [clientSecret, setClientSecret] = useState("")
 
-    const { id } = params;
-
     useEffect(() => {
         const makeRequest = async () => {
+            const { id } = params;
             try {
                 const res = await fetch(`http://localhost:3000/api/create-intent/${id}`, {
                     method: "POST",
@@ -26,11 +25,11 @@ const PaymentPage = ({ params }: { params: { id: string } }) => {
             }
         }
         makeRequest();
-    }, [id])
+    }, [params])
 
     const options: StripeElementsOptions = {
         clientSecret,
-        appearance:{theme:"stripe"}
+        appearance: { theme: "stripe" }
     }
 
     return (
