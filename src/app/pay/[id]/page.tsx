@@ -1,6 +1,5 @@
 "use client"
 
-import AddressForm from '@/components/AddressForm'
 import CheckoutForm from '@/components/CheckoutForm'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js'
@@ -38,7 +37,6 @@ const PaymentPage = ({ params }: { params: { id: string } }) => {
             {clientSecret && (
                 <Elements options={options} stripe={stripePromise}>
                     <CheckoutForm />
-                    <AddressForm/>
                 </Elements>
             )}
         </div>
