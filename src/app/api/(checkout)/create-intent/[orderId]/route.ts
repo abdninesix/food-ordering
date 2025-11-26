@@ -3,36 +3,22 @@ import { NextResponse } from "next/server";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export const POST = async (
-  req: Request,
-  { params }: { params: { orderId: string } }
-) => {
-  const { orderId } = await params;
+export const POST = async (req: Request,{ params }: { params: { orderId: string } }) => {
 
-  const order = await prisma.orders.findUnique({
-    where: { id: orderId },
-  });
+    const { orderId } = await params;
+    const order = await prisma.orders.findUnique({ where: { id: orderId } });
 
-  if (order) {
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: 100 * 100,
-      currency: "usd",
-      automatic_payment_methods: { enabled: true },
-    });
+    if (order) {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: 100 * 100,
+            currency: "usd",
+            automatic_payment_methods: { enabled: true },
+        });
 
-    await prisma.orders.update({
-      where: { id: orderId },
-      data: { intent_id: paymentIntent.id },
-    });
+        await prisma.orders.update({ where: { id: orderId }, data: { intent_id: paymentIntent.id } });
 
-    return NextResponse.json(
-      { clientSecret: paymentIntent.client_secret },
-      { status: 200 }
-    );
-  } else {
-    return NextResponse.json(
-      { message: "Something went wrong!" },
-      { status: 404 }
-    );
-  }
-};
+        return new NextResponse(JSON.stringify({ clientSecret: paymentIntent.client_secret }), { status: 200 })
+    } else {
+        return new NextResponse(JSON.stringify({ message: "Something went wrong!" }), { status: 404 })
+    }
+}
