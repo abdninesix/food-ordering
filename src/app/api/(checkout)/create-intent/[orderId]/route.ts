@@ -7,7 +7,7 @@ export const POST = async (
   req: Request,
   { params }: { params: { orderId: string } }
 ) => {
-  const { orderId } = params;
+  const { orderId } = await params;
 
   const order = await prisma.orders.findUnique({
     where: { id: orderId },
