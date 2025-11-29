@@ -24,7 +24,7 @@ const AddPage = () => {
                     <input type="text" name='category' />
                 </div>
                 <div>
-                    <label>Category</label>
+                    <label>Options</label>
                     <div>
                         <input type='text' placeholder='Title' name='title' />
                     </div>
