@@ -8,20 +8,26 @@ const AddPage = () => {
             <form>
                 <h1>Add New Product</h1>
                 <div>
-                    <label></label>
-                    <input type="" />
+                    <label>Title</label>
+                    <input type="text" name='title' />
                 </div>
                 <div>
-                    <label></label>
-                    <input type="" />
+                    <label>Description</label>
+                    <textarea name='description' />
                 </div>
                 <div>
-                    <label></label>
-                    <input type="" />
+                    <label>Price</label>
+                    <input type="number" name='price' />
                 </div>
                 <div>
-                    <label></label>
-                    <input type="" />
+                    <label>Category</label>
+                    <input type="text" name='category' />
+                </div>
+                <div>
+                    <label>Category</label>
+                    <div>
+                        <input type='text' placeholder='Title' name='title' />
+                    </div>
                 </div>
             </form>
         </div>
