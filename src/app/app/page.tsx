@@ -13,7 +13,7 @@ const AddPage = () => {
                 </div>
                 <div>
                     <label>Description</label>
-                    <textarea name='description' />
+                    <textarea name='desc' />
                 </div>
                 <div>
                     <label>Price</label>
