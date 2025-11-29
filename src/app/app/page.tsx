@@ -1,9 +1,13 @@
 import React from 'react'
 
-const page = () => {
-  return (
-    <div>page</div>
-  )
+const AddPage = () => {
+    return (
+        <div>
+            <form>
+
+            </form>
+        </div>
+    )
 }
 
-export default page
+export default AddPage
