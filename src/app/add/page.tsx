@@ -13,10 +13,11 @@ const AddPage = () => {
         price: 0,
         catSlug: ""
     })
-    const [options, setoptions] = useState({
+    const [option, setOption] = useState({
         name: "",
         additionalPrice: 0,
     })
+    const [options, setOptions] = useState([])
 
     const router = useRouter()
 
@@ -28,8 +29,12 @@ const AddPage = () => {
         router.push("/")
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        e.target.value
+    const handleInputs = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setInputs(prev => { return { ...prev, [e.target.name]: e.target.value } })
+    }
+
+    const handleOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setOptions(prev => { return { ...prev, [e.target.name]: e.target.value } })
     }
 
     return (
@@ -44,7 +49,7 @@ const AddPage = () => {
                         type="text"
                         name="title"
                         className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
-                        onChange={handleChange}
+                        onChange={handleInputs}
                     />
                 </div>
 
@@ -64,7 +69,7 @@ const AddPage = () => {
                         type="number"
                         name="price"
                         className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
-                        onChange={handleChange}
+                        onChange={handleInputs}
                     />
                 </div>
 
@@ -75,7 +80,7 @@ const AddPage = () => {
                         type="text"
                         name="catSlug"
                         className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
-                        onChange={handleChange}
+                        onChange={handleInputs}
                     />
                 </div>
 
@@ -88,12 +93,14 @@ const AddPage = () => {
                             placeholder="Title"
                             name="title"
                             className='p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
+                            onChange={handleOptions}
                         />
                         <input
                             type="number"
                             placeholder="Additional Price"
                             name="additionalPrice"
                             className='p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
+                            onChange={handleOptions}
                         />
                     </div>
                     <button
