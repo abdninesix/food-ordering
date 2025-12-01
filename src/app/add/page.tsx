@@ -114,7 +114,11 @@ const AddPage = () => {
 
                 {/* Options List */}
                 {options.map((item) => (
-                    <div className='mb-4 flex justify-between py-2 border-b border-gray-300' key={item.title}>
+                    <div
+                        className='mb-4 flex justify-between py-2 border-b border-gray-300'
+                        key={item.title}
+                        onClick={() => setOptions(options.filter((opt) => opt.title !== item.title))}
+                    >
                         <span className='text-lg'>{item.title}</span>
                         <span className='text-lg text-gray-600'>${item.additionalPrice}</span>
                     </div>
