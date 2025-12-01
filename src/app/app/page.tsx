@@ -27,6 +27,7 @@ const AddPage = () => {
                     <label>Options</label>
                     <div>
                         <input type='text' placeholder='Title' name='title' />
+                        <input type='number' placeholder='Price' name='additionalPrice' />
                     </div>
                 </div>
             </form>
