@@ -35,7 +35,7 @@ const AddPage = () => {
     }
 
     const handleOptions = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setOptions(prev => { return { ...prev, [e.target.name]: e.target.value } })
+        setOption(prev => { return { ...prev, [e.target.name]: e.target.value } })
     }
 
     return (
@@ -104,13 +104,12 @@ const AddPage = () => {
                             onChange={handleOptions}
                         />
                     </div>
-                    <button
-                        type="button"
+                    <div
                         className='mt-3 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500'
                         onClick={() => setOptions((prev) => [...prev, option])}
                     >
                         Add Option
-                    </button>
+                    </div>
                 </div>
 
                 {/* Options List */}
