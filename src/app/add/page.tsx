@@ -85,7 +85,7 @@ const AddPage = () => {
                     />
                 </div>
 
-                {/* Options Section */}
+                {/* Options Input */}
                 <div className='mb-6'>
                     <label className='block text-lg font-medium text-gray-700'>Options</label>
                     <div className='flex space-x-4 mt-2'>
