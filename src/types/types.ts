@@ -45,3 +45,15 @@ export type ActionType = {
   addToCart: (item: CartItemType) => void
   removeFromCart: (item: CartItemType) => void
 }
+
+export type Options = {
+  title: string,
+  additionalPrice: number
+}
+
+export type Inputs = {
+  title: string;
+  desc: string;
+  price: number;
+  catSlug: string;
+}

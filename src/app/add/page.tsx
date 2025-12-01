@@ -1,5 +1,6 @@
 "use client"
 
+import { Inputs, Options } from '@/types/types'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
@@ -7,17 +8,17 @@ import React, { useState } from 'react'
 const AddPage = () => {
 
     const { data: session, status } = useSession()
-    const [inputs, setInputs] = useState({
+    const [inputs, setInputs] = useState<Inputs>({
         title: "",
         desc: "",
         price: 0,
         catSlug: ""
     })
-    const [option, setOption] = useState({
-        name: "",
+    const [option, setOption] = useState<Options>({
+        title: "",
         additionalPrice: 0,
     })
-    const [options, setOptions] = useState([])
+    const [options, setOptions] = useState<Options[]>([])
 
     const router = useRouter()
 
