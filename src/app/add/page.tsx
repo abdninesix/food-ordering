@@ -1,8 +1,33 @@
 "use client"
 
-import React from 'react'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
 
 const AddPage = () => {
+
+    const { data: session, status } = useSession()
+    const [inputs, setInputs] = useState({
+        title: "",
+        desc: "",
+        price: 0,
+        catSlug: ""
+    })
+    const [options, setoptions] = useState({
+        name: "",
+        additionalPrice: 0,
+    })
+
+    const router = useRouter()
+
+    if (status === "loading") {
+        return <p className='text-center'>Loading</p>
+    }
+
+    if (status === "unauthenticated" || !session?.user.isAdmin) {
+        router.push("/")
+    }
+
     return (
         <div>
             <form>
@@ -21,7 +46,7 @@ const AddPage = () => {
                 </div>
                 <div>
                     <label>Category</label>
-                    <input type="text" name='category' />
+                    <input type="text" name='catSlug' />
                 </div>
                 <div>
                     <label>Options</label>
@@ -30,6 +55,12 @@ const AddPage = () => {
                         <input type='number' placeholder='Additional Price' name='additionalPrice' />
                     </div>
                     <button>Add Option</button>
+                </div>
+                <div>
+                    <div>
+                        <span>Small</span>
+                        <span>$2</span>
+                    </div>
                 </div>
             </form>
         </div>
