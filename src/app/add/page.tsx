@@ -107,16 +107,19 @@ const AddPage = () => {
                     <button
                         type="button"
                         className='mt-3 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500'
+                        onClick={() => setOptions((prev) => [...prev, option])}
                     >
                         Add Option
                     </button>
                 </div>
 
                 {/* Options List */}
-                <div className='mb-4 flex justify-between py-2 border-b border-gray-300'>
-                    <span className='text-lg'>Small</span>
-                    <span className='text-lg text-gray-600'>$2</span>
-                </div>
+                {options.map((item) => (
+                    <div className='mb-4 flex justify-between py-2 border-b border-gray-300' key={item.title}>
+                        <span className='text-lg'>{item.title}</span>
+                        <span className='text-lg text-gray-600'>${item.additionalPrice}</span>
+                    </div>
+                ))}
                 <button
                     type="submit"
                     className='mt-3 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500'
