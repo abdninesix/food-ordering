@@ -38,9 +38,18 @@ const AddPage = () => {
         setOption(prev => { return { ...prev, [e.target.name]: e.target.value } })
     }
 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        try {
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div className='max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg'>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h1 className='text-3xl font-semibold mb-6'>Add New Product</h1>
 
                 {/* Title Field */}
