@@ -38,10 +38,16 @@ const AddPage = () => {
         setOption(prev => { return { ...prev, [e.target.name]: e.target.value } })
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
-
+            const res = await fetch("http://localhost:3000/api/products", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ...inputs, options })
+            })
+            const data = await res.json()
+            router.push(`/product/${data.id}`)
         } catch (error) {
             console.log(error)
         }
