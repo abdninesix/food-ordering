@@ -58,6 +58,17 @@ const AddPage = () => {
             <form onSubmit={handleSubmit}>
                 <h1 className='text-3xl font-semibold mb-6'>Add New Product</h1>
 
+                {/* Image Field */}
+                <div className='mb-4'>
+                    <label className='block text-lg font-medium text-gray-700'>Image upload</label>
+                    <input
+                        type="file"
+                        name="image"
+                        className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
+                        onChange={handleInputs}
+                    />
+                </div>
+
                 {/* Title Field */}
                 <div className='mb-4'>
                     <label className='block text-lg font-medium text-gray-700'>Title</label>
