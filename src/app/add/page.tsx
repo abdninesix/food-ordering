@@ -47,7 +47,7 @@ const AddPage = () => {
                 body: JSON.stringify({ ...inputs, options })
             })
             const data = await res.json()
-            // router.push(`/product/${data.id}`)
+            router.push(`/product/${data.id}`)
         } catch (error) {
             console.log(error)
         }
@@ -75,6 +75,7 @@ const AddPage = () => {
                     <textarea
                         name="desc"
                         className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
+                        onChange={handleInputs}
                     />
                 </div>
 
