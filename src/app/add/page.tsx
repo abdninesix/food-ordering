@@ -19,6 +19,7 @@ const AddPage = () => {
         additionalPrice: 0,
     })
     const [options, setOptions] = useState<Options[]>([])
+    const [file, setFile] = useState()
 
     const router = useRouter()
 
