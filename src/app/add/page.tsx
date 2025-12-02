@@ -47,7 +47,7 @@ const AddPage = () => {
                 body: JSON.stringify({ ...inputs, options })
             })
             const data = await res.json()
-            router.push(`/product/${data.id}`)
+            // router.push(`/product/${data.id}`)
         } catch (error) {
             console.log(error)
         }
