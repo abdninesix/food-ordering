@@ -20,7 +20,7 @@ const CartPage = () => {
         const res = await fetch("http://localhost:3000/api/orders", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ price: totalPrice, userEmail: session.user.email, products, status: "Unpaid" })
+          body: JSON.stringify({ price: totalPrice, userEmail: session.user.email, products, status: "Being prepared" })
         })
         const data = await res.json()
         router.push(`/pay/${data.id}`)
