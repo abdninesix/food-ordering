@@ -42,7 +42,7 @@ const AddPage = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
-            const url = upload()
+            const url = await upload()
             const res = await fetch("http://localhost:3000/api/products", {
                 method: "POST",
                 headers: { "Content-Type": "multipart/form-data" },
