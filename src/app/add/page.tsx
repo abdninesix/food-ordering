@@ -42,10 +42,11 @@ const AddPage = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
+            const url = upload()
             const res = await fetch("http://localhost:3000/api/products", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...inputs, options })
+                headers: { "Content-Type": "multipart/form-data" },
+                body: JSON.stringify({ img: url, ...inputs, options })
             })
             const data = await res.json()
             router.push(`/product/${data.id}`)
