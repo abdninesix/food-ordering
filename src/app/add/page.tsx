@@ -62,11 +62,14 @@ const AddPage = () => {
 
     const upload = async () => {
         const data = new FormData()
-        data.append("file", file)
+        data.append("file", file!)
+        data.append("upload_preset", "food-ordering")
         const res = await fetch("https://api.cloudinary.com/v1_1/:cloud_name/image", {
             method: "POST",
-            body: data
+            body: data,
         })
+        const resData = await res.json();
+        return resData.url;
     }
 
     return (
