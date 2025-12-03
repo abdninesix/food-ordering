@@ -45,7 +45,6 @@ const AddPage = () => {
             const url = await upload()
             const res = await fetch("http://localhost:3000/api/products", {
                 method: "POST",
-                headers: { "Content-Type": "multipart/form-data" },
                 body: JSON.stringify({ img: url, ...inputs, options })
             })
             const data = await res.json()
@@ -67,6 +66,7 @@ const AddPage = () => {
         data.append("upload_preset", "food-ordering")
         const res = await fetch("https://api.cloudinary.com/v1_1/dvjbkun4a/image", {
             method: "POST",
+            headers: { "Content-Type": "multipart/form-data" },
             body: data,
         })
         const resData = await res.json();
