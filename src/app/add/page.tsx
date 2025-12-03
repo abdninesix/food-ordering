@@ -19,7 +19,7 @@ const AddPage = () => {
         additionalPrice: 0,
     })
     const [options, setOptions] = useState<Options[]>([])
-    const [file, setFile] = useState<FileList | null>()
+    const [file, setFile] = useState<File>()
 
     const router = useRouter()
 
@@ -56,6 +56,8 @@ const AddPage = () => {
 
     const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement
+        const item = (target.files as FileList)[0]
+        setFile(item)
     }
 
     const upload = async () => {
