@@ -19,7 +19,7 @@ const AddPage = () => {
         additionalPrice: 0,
     })
     const [options, setOptions] = useState<Options[]>([])
-    const [file, setFile] = useState()
+    const [file, setFile] = useState<FileList | null>()
 
     const router = useRouter()
 
@@ -66,7 +66,7 @@ const AddPage = () => {
                         type="file"
                         name="image"
                         className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
-                        onChange={handleInputs}
+                        onChange={(e) => setFile(e.target.files)}
                     />
                 </div>
 
