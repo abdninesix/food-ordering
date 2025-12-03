@@ -54,8 +54,17 @@ const AddPage = () => {
         }
     }
 
+    const handleChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const target = e.target as HTMLInputElement
+    }
+
     const upload = async () => {
-        // Cloudinary upload API
+        const data = new FormData()
+        data.append("file", file)
+        const res = await fetch("https://api.cloudinary.com/v1_1/:cloud_name/image", {
+            method: "POST",
+            body: data
+        })
     }
 
     return (
@@ -70,7 +79,7 @@ const AddPage = () => {
                         type="file"
                         name="image"
                         className='mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500'
-                        onChange={(e) => setFile(e.target.files)}
+                        onChange={handleChangeImg}
                     />
                 </div>
 
